@@ -1,0 +1,890 @@
+:root {
+	/* UNUSED WIP
+		--primary-color: #BB86FC;
+		--third-color: #963484;
+	*/
+	/* Main Text Colors*/
+	--primary-text-color: #1a181a;
+	--secondary-text-color: #8c8c8c;
+	--tertiary-text-color: #C9AAE7;
+	/* Main UI Colors*/
+	--primary-color: #121212;
+	--secondary-color: #141414;
+	/* Main Background Color*/
+	--background-color: #000000;
+
+	/* Forecast high and low */
+	--high-color: #FF9933;
+	--low-color: #9BD1FA;
+	--rain-color: #017BC7;
+	--humidity-color: #AAAAAA;
+
+	/* Card Primary Colors*/
+	--card-background-color: #121212;
+	/* Card Title Colors*/
+	--card-title-color: white;
+	/* Word and Prayer Card*/
+	--card-blue: #059FFE;
+	/* Planting Card*/
+	--planting-primary-color: #0dd34c;
+	/* Recipe Card*/
+	--recipe-primary-color: #d11515;
+
+}
+
+
+body {
+	margin: 0px;
+	padding: 0px;
+	background-color: var(--background-color);
+	color: var(--primary-text-color);
+	transition: background-color 2s ease-in-out, color 1s ease-in-out;
+	
+}
+
+body > * {
+	transition: background-color 2s ease-in-out, color 1s ease-in-out;
+}
+
+p {
+	font-size: 18px;
+	font-family: Verdana;
+}
+
+
+.card {
+	display: flex;
+	flex-grow: 1;
+	margin: 8px;
+	max-width: 45vw;
+	max-height: 30rem;
+	background-color: var(--card-background-color);
+	transition: background-color 2s ease-in-out, color 2s ease-in-out;
+}
+
+.cards_container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	padding: 15px;
+	width: 100%;
+}
+
+.card-header {
+	text-align: center;
+	background-color: var(--primary-color);
+	color: var(--card-title-color);
+	font-weight: bold;
+	font-size: 20px;
+}
+
+#word_card .card-header, #prayer_card .card-header {
+	background-color: var(--card-blue);
+}
+
+.card-header#recipe {
+	background-color: var(--recipe-primary-color);
+}
+
+.card-header#planting {
+	background-color: var(--planting-primary-color);
+}
+
+.card-body {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	font-size: 16px;
+	justify-content: center;
+}
+
+#current_weather_container {
+	align-content: center;
+	align-items: center;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+#current_forecast_container {
+	align-content: center;
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 8px;
+	margin-left: 16px;
+}
+
+#current_forecast_container #forecast_title {
+	color: var(--tertiary-text-color);
+}
+
+#current_forecast_container #forecast::before {
+	content: "Currently...";
+	color: var(--tertiary-text-color);
+	display: block;
+	font-size: 14px;
+	font-style: italic;
+	opacity: 0.8;
+	text-align: center;
+}
+#current_forecast_container #forecast {
+	color: var(--tertiary-text-color);
+	text-align: center;
+	margin: 2px;
+}
+
+#current_forecast_container #temp {
+	color: var(--tertiary-text-color);
+	padding: 2px;
+	margin: 2px;
+	text-align: center;
+}
+
+#current_weather_container  p {
+	font-weight: bold;
+	font-size: 1.4em;
+}
+#current_weather_container  p::before {
+	padding-right: 7px;
+	font-family: "Font Awesome 5 Free";
+	font-weight: 900;
+	font-size: 2em;
+}
+
+#current_weather_container {
+	padding: 7px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#current_weather_container #high {
+	color: var(--high-color);
+	font-size: 18px;
+}
+#current_weather_container #high::before {
+	content: "\f2c7";
+	color: var(--high-color);
+	font-size: 18px;
+}
+#current_weather_container #high::after {
+	content: "High";
+	display: block;
+	font-size: 11px;
+	font-style: italic;
+	text-align: center;
+	color: var(--high-color);
+}
+#current_weather_container #rain {
+	color: var(--rain-color);
+	font-size: 18px;
+}
+#current_weather_container #rain::before {
+	content: "\f043";
+	color: var(--rain-color);
+	font-size: 18px;
+}
+#current_weather_container #rain::after {
+	content: "Rain";
+	display: block;
+	font-size: 11px;
+	font-style: italic;
+	text-align: center;
+	color: var(--rain-color);
+}
+
+#current_weather_container #humidity {
+	color: var(--humidity-color);
+	font-size: 18px;
+}
+#current_weather_container #humidity::before {
+	content: "\f043";
+	color: var(--humidity-color);
+	font-size: 18px;
+}
+#current_weather_container #humidity::after {
+	content: "Humidity";
+	display: block;
+	font-size: 11px;
+	font-style: italic;
+	text-align: center;
+	color: var(--humidity-color);
+}
+
+#current_weather_container #low {
+	color: var(--low-color);
+	font-size: 18px;
+}
+#current_weather_container #low::before {
+	content: "\f2ca";
+	color: var(--low-color);
+	font-size: 18px;
+}
+#current_weather_container #low::after {
+	content: "Low";
+	display: block;
+	font-size: 11px;
+	font-style: italic;
+	text-align: center;
+	color: var(--low-color);
+}
+
+#datetime_container {
+	align-items: center;
+	padding: 7px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+}
+
+#datetime_container #date {
+	color: var(--tertiary-text-color);
+	font-size: 23px;
+}
+
+#datetime_container #day {
+	color: var(--tertiary-text-color);
+	font-size: 22px;
+	margin-bottom: 0px;
+}
+
+#datetime_container #time {
+	border: 3px solid var(--tertiary-text-color);
+	border-radius: 7px;
+	color: var(--tertiary-text-color);
+	font-size: 20px;
+	font-weight: bold;
+	margin-top: 5px;
+	padding: 2px;
+	padding-left: 3px;
+	padding-right: 3px;
+}
+
+#forecast_icon {
+	width: 128px;
+}
+
+#forecast_title {
+	font-size: 25px;
+	font-weight: bold;
+	margin: 0px;
+	padding: 0px;
+}
+
+#planting_card .card-header::before {
+	content: '\f4d8';
+	font-family: "Font Awesome 5 Free";
+	font-weight: 900;
+	font-size: 1.2em;
+}
+
+#planting_card .card-header::after {
+	color: var(--card-title-color);
+	content: 'www.burpee.com';
+	font-style: italic;
+	font-size: 10px;
+	opacity: 0.6;
+	position: absolute;
+	right: 3px;
+	text-decoration: underline;
+	top: 3px
+}
+
+.planting#classification {
+	color: var(--card-title-color);
+	font-size: 13px;
+	margin: 2px;
+}
+
+.planting#name {
+	color: var(--card-title-color);
+	font-size: 16px;
+	font-weight: bold;
+	margin: 2px;
+	margin-bottom: 3px;
+}
+
+.planting#image {
+	border: 2px solid #83eb34;
+	margin-bottom: 0px;
+	max-height: 150px;
+	overflow: hidden;
+	width: 220px;
+}
+
+.planting#sow {
+	font-size: 14px;
+	margin: 2px;
+	margin-right: auto;
+}
+.planting#sow::before {
+	content: "Sow: ";
+	font-weight: bold;	
+}
+
+.planting#succession {
+	font-size: 14px;
+	margin-bottom: 2px;
+}
+.planting#succession::before {
+	content: "Succession: ";
+	font-weight: bold;
+}
+
+.planting#sow_time_container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.planting#spring_summer_container, .planting#fall_container {
+	display: flex;
+	flex-direction: column;
+}
+
+.planting#spring_summer_container {
+	border: 2px solid var(--planting-primary-color);
+	border-top-left-radius: 7px;
+	border-bottom-left-radius: 7px; 
+}
+
+.planting#fall_container {
+	border: 2px solid #f5982e;
+	border-top-right-radius: 7px;
+	border-bottom-right-radius: 7px; 
+}
+
+.planting#spring_summer_container *, .planting#fall_container * {
+	font-size: 12px;
+	padding: 2px;
+	margin: 0px;
+	opacity: 0.8;
+}
+
+.planting#spring_summer_container *::before, .planting#fall_container *::before {
+	color: var(--secondary-text-color);
+	font-size: 13px;
+	font-weight: bold;
+}
+
+.planting#spring_summer_container * {
+	border: 1px solid var(--planting-primary-color);
+}
+
+.planting#fall_container * {
+	border: 1px solid #f5982e;
+}
+
+.planting#spring_summer_container::before {
+	background-color: var(--planting-primary-color);
+	color: var(--primary-text-color);
+	content: "Spring";
+	font-weight: bold;
+}
+
+.planting#fall_container::before {
+	background-color: #f5982e;
+	color: var(--primary-text-color);
+	content: "Fall";
+	font-weight: bold;
+}
+
+.planting#title {
+	background-color: var(--planting-primary-color);
+	border-bottom-right-radius: 7px;
+	border-bottom-left-radius: 7px;
+	margin-top: 0px;
+}
+
+
+#temp {
+	font-size: 26px;
+	color: var(--secondary-text-color);
+	font-style: italic;
+	font-weight: bold;
+}
+
+#top_right #location {
+	color: var(--tertiary-text-color);
+	font-size: 20px;
+}
+
+.prayer#prayer {
+	font-size: 15px;
+}
+
+.prayer#verse {
+	color: var(--card-blue);
+}
+
+#prayer_card .card-header::before {
+	content: '\f647';
+	font-family: "Font Awesome 5 Free";
+	font-weight: 900;
+	font-size: 1.2em;
+}
+
+#recipe_card .card-header::before {
+	content: '\f2e7';
+	font-family: "Font Awesome 5 Free";
+	font-weight: 900;
+	font-size: 1.2em;
+}
+
+#recipe_card .card-header::after {
+	color: var(--card-title-color);
+	content: 'www.allrecipes.com';
+	font-style: italic;
+	font-size: 10px;
+	opacity: 0.6;
+	position: absolute;
+	right: 3px;
+	text-decoration: underline;
+	top: 3px
+}
+
+#recipe_card .card-body {
+
+}
+
+.recipe#author {
+	color: var(--secondary-text-color);
+	font-size: 14px;
+	font-style: italic;
+	text-decoration: underline;
+	margin-left: auto;
+	margin-top: 2px;
+	opacity: 80%;
+}
+
+.recipe#image {
+	height: 150px;
+	width: 175px;
+	border: 6px solid var(--recipe-primary-color);
+	border-top-left-radius: 7px;
+	border-bottom-left-radius: 7px;
+	border-bottom-right-radius: 7px;
+}
+
+.recipe#image_container {
+	display: flex;
+	justify-content: space-around;
+	width: 100%;
+}
+
+.recipe#name {
+	background-color: var(--recipe-primary-color);
+	border-radius: 7px;
+	color: var(--card-title-color);
+	font-weight: bold;
+	margin-bottom: 3px;
+	padding: 2px;
+
+}
+
+.recipe#review {
+	display: flex;
+	justify-content: center;
+	padding: 2px;
+}
+
+.jq-star-svg {
+	height: 24px;
+	width: 24px;
+}
+
+.recipe#scan_me {
+	background-color: var(--recipe-primary-color);
+	border-bottom-left-radius: 7px;
+	border-bottom-right-radius: 7px;
+	color: white;
+}
+
+.recipe#summary {
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	background-color: var(--card-background-color);
+	border-left: 2px solid var(--recipe-primary-color);
+	border-right: 2px solid var(--recipe-primary-color);
+	font-size: 15px;
+	max-height: 75px;
+	margin-bottom: 2px;
+	padding: 2px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	width: 100%;
+}
+
+.recipe#qrcode_container {
+	display: flex;
+	flex-direction: column;
+}
+
+.recipe#recipe_qrcode {
+	padding: 3px;
+	background-color: #ffffff;
+}
+
+
+#time_and_date {
+	min-width: 150px;
+}
+
+#top_right {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	min-width: 150px;
+}
+
+#top_container {
+	margin: 0px;
+	display: flex;
+	flex-shrink: 1;
+	height: 260px;
+	justify-content: space-between;
+
+	background-color: var(--primary-color);
+	padding-top: 7px;
+	padding-bottom: 7px;
+}
+
+#top_container * {
+	color: var(--primary-text-color);
+	min-width: 30%;
+}
+
+#weather_container {
+	display: flex;
+}
+
+#weather_week_container {
+	background-color: var(--primary-color);
+	display: flex;
+	padding: 8px;
+	justify-content: center;
+}
+
+#weather_week_table {
+	width: 100%;
+}
+
+
+#weather_week_container td {
+	background-color: var(--secondary-color);
+	border-left: 4px solid var(--primary-color);
+	border-right: 4px solid var(--primary-color);
+	width: 100px;
+}
+
+#weather_week_container td#day {
+	font-size: 16px;
+	color: var(--tertiary-text-color);
+	font-weight: bold;
+	text-align: center;
+}
+
+#weather_week_container td#date {
+	font-size: 14px;
+	color: var(--secondary-text-color);
+	text-align: center;
+}
+
+#weather_week_container td#high {
+	color: var(--high-color);
+	font-size: 13px;
+	font-weight: bold;
+}
+#weather_week_container td#high::after {
+	content: "\2109";
+	color: var(--high-color);
+	font-size: 13px;
+}
+#weather_week_container td#high::before {
+	content: "H: ";
+	color: var(--high-color);
+	font-size: 13px;
+	font-weight: bold;
+}
+
+#weather_week_container td#low {
+	color: var(--low-color);
+	font-size: 13px;
+	font-weight: bold;
+}
+#weather_week_container td#low::after {
+	content: "\2109";
+	color: var(--low-color);
+	font-size: 13px;
+}
+#weather_week_container td#low::before {
+	content: "L: ";
+	color: var(--low-color);
+	font-size: 13px;
+	font-weight: bold;
+}
+
+#weather_week_container td#img, #weather_week_container td#forecast { 
+	text-align: center;
+}
+
+#weather_week_container td#forecast {
+	font-size: 13px;
+	font-weight: bold;
+}
+
+#weather_week_container td#rain {
+	font-size: 13px;
+	font-weight: bold;
+	color: var(--rain-color);
+}
+
+#weather_week_container td#rain::before {
+	content: "R: ";
+	color: var(--rain-color);
+	font-weight: bold;
+}
+
+#weather_week_container td#rain::after {
+	content: "%";
+	color: var(--rain-color);
+	font-weight: bold;
+}
+
+.word#definitions p {
+	font-size: 15px;
+}
+.word#definitions:before {
+	color: var(--secondary-text-color);
+	content: "-Definitions-";
+	display: block;
+	font-size: 17px;
+	font-weight: bold;
+}
+.word#examples p {
+	font-style: italic;
+	margin: 0px;
+	padding: 0px;
+	font-size: 15px;
+}
+.word#examples:before {
+	color: var(--secondary-text-color);
+	content: "-Examples-";
+	display: block;
+	font-size: 17px;
+	font-weight: bold;
+}
+
+.word#title {
+	font-weight: bold;
+	font-size: 24px;
+	margin: 2px;
+	color: var(--card-blue);
+}
+
+.word#pronunciation {
+	margin: 2px;
+	color: var(--secondary-text-color);
+}
+
+.word#type {
+	font-weight: bold;
+	font-size: 15px;
+	font-style: italic;
+}
+
+.word#definitions p {
+	margin: 0px;
+	padding: 0px;
+}
+
+#word_card .card-header::before {
+	content: '\f518';
+	font-family: "Font Awesome 5 Free";
+	font-weight: 900;
+	font-size: 1.2em;
+}
+
+.carousel{
+  margin-top: 50px;
+}
+.carousel-inner{
+  height: 100px;
+}
+.carousel-caption{
+  color: #fff;
+  top: 50%;
+}
+
+#spring_indoor_sow::before {
+	content: "Spring Indoor";
+	display: block;
+}
+
+#summer_transplant::before {
+	content: "Summer Transplant";
+	display: block;
+}
+
+#spring_summer_transplant::before {
+	content: "Spr/Sum Transplant";
+	display: block;
+}
+
+#fall_indoor_sow::before {
+	content: "Fall Indoor";
+	display: block;
+}
+
+#fall_transplant::before {
+	content: "Fall Transplant";
+	display: block;
+}
+
+#fall_direct_sow::before {
+	content: "Fall Direct";
+	display: block;
+}
+
+#progress_bar {
+	background-color: #f1f1f1;
+	border-radius: 7px;
+	height: 5px;
+	padding: 1px;
+	width: 100%;
+}
+
+#myprogress {
+	background-color: lightgreen;
+	display: block;	
+	height: 100%;
+	transition: width 500ms ease-in-out;
+	width: 0%;
+}
+
+.rating * {
+	padding: 2px;
+	margin: 2px;
+}
+
+.fa-star {
+	color: yellow;
+}
+
+.fa-star-o {
+	color: yellow;
+}
+
+.fa-star-half-o {
+	color: green;
+}
+
+.star-rating {
+	color: green;
+	width: 50px;
+	height: 50px;
+}
+
+.star-rating .star-value {
+  height: 100%;
+  width: 100%;
+  left: -2px;
+  bottom: -2px;
+  color: red;
+}
+
+#clock_container {
+	display: flex;
+	justify-content: center;
+}
+
+.clock {
+	display: block;
+	position: relative;
+	background-color: rgba(0,0,0,0);
+	height: 110px;
+	width: 110px;
+	max-height: 110px;
+	max-width: 110px;
+	border-radius: 50%;
+	border: 4px solid var(--tertiary-text-color);;
+}
+
+.clock div {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+}
+
+.clock div div {
+	left: 50%;
+}
+
+.clock span {
+	position: absolute;
+	width: 5px;
+	height: 5px;
+	background-color: rgba(0,0,0,0);
+}
+
+#div-hour div {
+	top: 20%;
+	height: 30%;
+	border-left: 3px solid var(--tertiary-text-color);
+	margin-left: -1px;
+	z-index: 1;
+}
+
+#div-minute div {
+	top: 10%;
+	height: 40%;
+	border-left: 3px solid var(--tertiary-text-color);
+	margin-left: -1px;
+}
+
+#div-second div {
+	top: 5%;
+	height: 45%;
+	z-index: 0;
+	border-left: 1px solid var(--tertiary-text-color);
+}
+
+#dot {
+	border-radius: 50%;
+	height: 9px;
+	position: absolute;
+	top: 45%;
+	left: 30%;
+	width: 9px;
+	z-index: 99;
+}
+
+#dot div {
+	border: 3px solid var(--tertiary-text-color);
+	border-radius: 7px;
+	height: 9px;
+	max-width: 9px;
+	background-color: var(--tertiary-text-color);
+}
+
+#dark {
+	background-color: rgba(0,0,0,0);
+	content: "DARK";
+	display: none;
+	height: 20px;
+}
+
+#light {
+	background-color: rgba(0,0,0,0);
+	color: #AAAAAA;
+	content: "LIGHT";
+	display: none;
+	height: 20px;
+}

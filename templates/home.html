@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- JavaScript Bundle with Popper -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+		<!--BootStrap-->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+		<!-- Jquery/Ajax -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+		<!-- Waypoints -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"></script>
+		<!-- Socket IO -->
+		<script type="text/javascript" src="https://cdn.socket.io/3.1.3/socket.io.min.js" integrity="sha384-cPwlPLvBTa3sKAgddT6krw0cJat7egBga3DJepJyrLl4Q9/5WLra3rrnMcyTyOnh" crossorigin="anonymous"></script>
+		<!--Font Awesome-->
+		<script src="https://kit.fontawesome.com/b447306033.js" crossorigin="anonymous"></script>
+		<!-- QR Code -->
+		<script rel="stylesheet" src="{{ url_for('static', filename='js/qrcode.js') }}"></script>
+		<!--Slick-->
+		<script type="text/javascript" src="{{ url_for('static', filename='slick/slick.js') }}"></script>
+		<!--Slick CSS-->
+		<link rel="stylesheet" type="text/css" src="{{ url_for('static', filename='slick/slick.css') }}"/>
+		<!--Slick Theme CSS-->
+		<link rel="stylesheet" type="text/css" src="{{ url_for('static', filename='slick/slick-theme.css') }}"/>
+		<!--Star Rating SVG Jquery-->
+		<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.star-rating-svg.js') }}"></script>
+		<!--Star Rating SVG Jquery CSS-->
+		<link rel="stylesheet" type="text/css" src="{{ url_for('static', filename='css/star-rating-svg.css') }}"/>
+		<!--Star Rating Jquery CSS-->
+		<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.star-rating.js') }}"></script>
+		<!--Rater CSS-->
+		<script type="text/javascript" src="{{ url_for('static', filename='js/rater.js') }}"></script>
+		
+		<!--Stylesheet-->
+		<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/home.css') }}">
+
+	</head>
+<script src="{{ url_for('static', filename='js/home.js') }}"></script>
+	<body>
+		<div id="top_container">
+			<!--Current Weather-->
+			<div id="weather_container">
+				<!--Forecast-->
+				<div id="current_forecast_container">
+					<p id="forecast_title">TODAY</p>
+					<img id="forecast_icon">
+					<p id="forecast">Unknown</p>
+					<p id="temp">--</p>
+				</div>
+				<!--Temperature-->
+				<div id="current_weather_container">
+					<p id="high">--</p>
+					<p id="low">--</p>
+					<p id="rain">--</p>
+					<p id="humidity">--</p>	
+				</div>
+			</div>
+			<!--Time and Date-->
+			<div id="datetime_container">
+				<div id="clock_container">
+					<div class="clock">
+						<div id="div-hour"> <div></div> </div>
+						<div id="div-minute"> <div></div> </div>
+						<div id="div-second"> <div></div> </div>
+						<div id="dot"> <div></div> </div>
+					</div>
+				</div>
+				<p id="time">--</p>
+				<p id="day">--</p>
+				<p id="date">--</p>
+				
+			</div>
+			<!--Top Right-->
+			<div id="top_right">
+				<p id="location">Orlando,FL</p>
+				<p id="dark"></p>
+				<p id="light"></p>
+			</div>
+		</div>
+		<!--Weather Week-->
+		<div id="weather_week_container">
+			<table id="weather_week_table"></table>
+		</div>
+		<div class="cards_container">
+			<div class="card" id="word_card">
+				<div class="card-header">
+					Word of the Day
+				</div>
+  				<div class="card-body">
+  					<p class="word" id="title">--</p>
+  					<p class="word" id="pronunciation">--</p>
+  					<p class="word" id="type">--</p>
+  					<div class="word" id="definitions">--</div>
+  					<div class="word" id="examples">--</div>
+  				</div>
+			</div>
+			<div class="card" id="prayer_card">
+				<div class="card-header">
+					Prayer of the Day
+				</div>
+  				<div class="card-body">
+  					<p class="prayer" id="prayer">--</p>
+  					<p class="prayer" id="verse">--</p>
+  				</div>
+			</div>
+			<div class="card" id="planting_card">
+				<div class="card-header" id="planting">
+					Planting Stats
+				</div>
+  				<div class="card-body">
+  					<div class="planting" id="image_container"> 
+  						<img class="planting" id="image"> 
+  					</div>
+  					<div class="planting" id="general_info">
+  						<div class="planting" id="title">
+  							<p class="planting" id="classification">--</p>
+  							<p class="planting" id="name">--</p>
+  						</div>
+  						<p class="planting" id="sow">--</p>
+  						<p class="planting" id="succession"></p>
+  					</div>
+  					<div class="planting" id="sow_time_container">
+	  					<div class="planting" id="spring_summer_container">
+	  						<p class="planting" id="spring_indoor_sow">--</p>
+	  						<p class="planting" id="summer_transplant">--</p>
+	  						<p class="planting" id="spring_summer_transplant">--</p>
+	  					</div>
+	  					<div class="planting" id="fall_container">
+	  						<p class="planting" id="fall_indoor_sow">--</p>
+	  						<p class="planting" id="fall_transplant">--</p>
+	  						<p class="planting" id="fall_direct_sow">--</p>
+	  					</div>
+  					</div>
+  					<div id="progressbar2"></div>
+  				</div>
+			</div>
+			<div class="card" id="recipe_card">
+				<div class="card-header" id="recipe">
+					Recipe Ideas
+				</div>
+  				<div class="card-body">
+  					<div class="recipe" id="image_container">
+  						<img class="recipe" id="image">
+						<div class="recipe" id="qrcode_container">
+							<div class="recipe" id="recipe_qrcode"></div>
+							<p class="recipe" id="scan_me">Scan Me!</p>
+						</div>
+  					</div>
+  					<p class="recipe" id="name">--</p>
+  					<div class="recipe" id="review"></div>
+  					<!--<span class="rating"></span>-->
+  					<p class="recipe" id="summary">--</p>
+  					<p class="recipe" id="author">--</p>
+			</div>
+		</div>
+	</body>
+</html>
