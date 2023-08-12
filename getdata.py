@@ -18,7 +18,11 @@ def hi():
 def getWeatherData():
 	#return "weather update"
 	# Enter your API key here
-	weatherKeyFile = open('myData/weatherKey', 'rb')
+	try:
+		weatherKeyFile = open('myData/weatherKey', 'rb')
+	except FileNotFoundError:
+		return 'Error: Weather Key File Not Found!'
+
 	try:  
 		api_key = pickle.load(weatherKeyFile)
 	except FileNotFoundError:
@@ -115,7 +119,7 @@ def getWordData():
 	result = soup.find('div', {'class': 'WordHeader__row WordHeader__row--part'})
 	word_of_day['type'] = par = result.findChild("p").text
 	# Word Definition
-	result = soup.find('div', {'class': 'WordHeader__columns WordHeader__columns--definition'})
+	result = soup.find('div', {'class': 'WordHeader__row WordHeader__row--definition'})
 	definition_para = result.findAll('p', {'class': 'WordHeader__paragraph'})
 	# There can be multiple definitions, make definitions a list
 	word_of_day['definitions'] = []
@@ -133,15 +137,15 @@ def getWordData():
 
 def getPrayerData():	
 	prayer_of_day = {}
-	URL = 'https://www.biblestudytools.com/bible-verse-of-the-day/'
+	URL = 'https://www.verseoftheday.com/'
 	page = requests.get(URL)
 	soup = BeautifulSoup(page.content, 'html.parser')
 	# Prayer Data
-	result = soup.find('div', {'class': 'carousel-inner'})
+	result = soup.find('div', {'class': 'bilingual-left'})
 	# Prayer
-	prayer_of_day['prayer'] = ' '.join(result.find('span', {'class': 'verse'}).text.split())
+	prayer_of_day['prayer'] = soup.find('div', {"class": 'bilingual-left'}).text
 	# Verse
-	prayer_of_day['verse'] = ' '.join(soup.find('strong', {'style': 'display: block;'}).text.split())
+	prayer_of_day['verse'] = soup.find('div', {"class": 'reference'}).text
 	return prayer_of_day
 
 
@@ -266,10 +270,14 @@ def getRecipeData():
 	print(random_recipe_card['href'])
 
 	#print(random_recipe)
-	#print(random_recipe)
+
+	print(random_recipe)
+	print("===========================================")
+	print(random_recipe_card['href'])
+
 	# Add Recipe Info to dictionary
-	recipe['name'] = random_recipe.find('h1', {'id': 'article-heading_2-0'}).text
-	recipe['review'] = random_recipe.find('div', {'id': 'mntl-recipe-review-bar__rating_2-0'})
+	recipe['name'] = random_recipe.find('h1', {'id': 'article-heading_1-0'}).text
+	recipe['review'] = random_recipe.find('div', {'id': 'mntl-recipe-review-bar__rating_1-0'})
 	if not recipe['review'] == None:
 		#recipe['review'] = recipe['review'].text
 		recipe['review'] = float( re.sub("[^0-9^.]", "", recipe['review'].text) )
@@ -478,5 +486,4 @@ def getWeather3():
 #print( getWeather3() )
 #print( getWeatherWeek2() )
 #print (getRecipeData())
-
-print(getWeatherData())
+#print(getPlantingData())

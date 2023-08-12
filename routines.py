@@ -47,7 +47,10 @@ class Routine(object):
 			if  datetime.now() >= time_to_update:
 				#try:
 				print("Ready to update, updating...")
-				task['data'] = task['function']()
+				try:
+					task['data'] = task['function']()
+				except:
+					task['data'] = {}
 				# add update per minutes as int to data
 				task['data']['update_per_min'] = round(task['update_per_min'].seconds/60)
 				#Set Task ready (not ready to update) to True
